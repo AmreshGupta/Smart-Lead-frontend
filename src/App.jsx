@@ -7,14 +7,18 @@ export default function App() {
   const [filter, setFilter] = useState("All");
 
   const fetchLeads = async () => {
-    const res = await axios.get("http://localhost:5000/api/leads");
+    const res = await axios.get(
+      "https://smart-lead-backend-qnm1.onrender.com/api/leads"
+    );
     setLeads(res.data);
   };
 
   const submitNames = async () => {
     if (!input.trim()) return;
     const names = input.split(",").map((n) => n.trim());
-    await axios.post("http://localhost:5000/api/leads", { names });
+    await axios.post("https://smart-lead-backend-qnm1.onrender.com/api/leads", {
+      names,
+    });
     setInput("");
     await fetchLeads();
   };
